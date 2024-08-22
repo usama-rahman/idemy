@@ -3,14 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { MobileNav } from "@/components/mobile-nav";
 import { X } from "lucide-react";
-
 import { Menu } from "lucide-react";
-
 import { useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
+import Logo from "../common/Logo";
+import { MobileNav } from "./MobileNav";
+import { Button, buttonVariants } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export function MainNav({ items, children }) {
   const { data: session } = useSession();
