@@ -8,7 +8,7 @@ import { Menu } from "lucide-react";
 import { useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
-import Logo from "../common/Logo";
+import Logo from "./Logo";
 import { MobileNav } from "./MobileNav";
 import { Button, buttonVariants } from "../ui/button";
 import {

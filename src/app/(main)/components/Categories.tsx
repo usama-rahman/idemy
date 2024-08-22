@@ -1,8 +1,8 @@
-import { SectionTitle } from "@/components/section-title";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getCategories } from "@/queries/categories";
+import SectionTitle from "@/components/common/SectionTitle";
 
 export default async function Categories() {
   const categories = await getCategories();

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import Logo from "../common/Logo";
+import Logo from "./Logo";
 
 export function SiteFooter({ className }: { className?: string }) {
   return (

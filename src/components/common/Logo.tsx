@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/assets/lws_logo.svg";
+import logo from "../../../public/lws_logo.svg";
 import { cn } from "@/lib/utils";
 
 interface LogoProps {
