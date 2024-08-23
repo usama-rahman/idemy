@@ -1,4 +1,5 @@
 import MainNav from "@/components/MainNav";
+import SiteFooter from "@/components/SiteFooter";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,7 +12,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         {/* </SessionProvider> */}
       </header>
       <main className="flex-1 pt-20 flex flex-col">{children}</main>
-      {/* <SiteFooter /> */}
+      <SiteFooter />
     </div>
   );
 };

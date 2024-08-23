@@ -13,6 +13,8 @@ import { useSession, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import navLinks from "@/lib/navbar";
+import Logo from "./Logo";
+import MobileNav from "./MobileNav";
 
 function MainNav({ children }: { children?: React.ReactNode }) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -38,7 +40,9 @@ function MainNav({ children }: { children?: React.ReactNode }) {
   return (
     <>
       <div className="flex gap-6 lg:gap-10">
-        <Link href="/">{/* <Logo /> */}</Link>
+        <Link href="/">
+          <Logo />
+        </Link>
         {items?.length ? (
           <nav className="hidden gap-6 lg:flex">
             {items?.map((item, index) => (
@@ -55,9 +59,7 @@ function MainNav({ children }: { children?: React.ReactNode }) {
           </nav>
         ) : null}
 
-        {/* {showMobileMenu && items && 
-        <MobileNav items={items}>{children}</MobileNav>
-        } */}
+        {showMobileMenu && items && <MobileNav>{children}</MobileNav>}
       </div>
       <nav className="flex items-center gap-3">
         {!loginSession && (
