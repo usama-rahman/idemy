@@ -29,5 +29,4 @@ const testimonialSchema: Schema<ITestimonial> = new Schema({
 });
 
 export const Testimonial: Model<ITestimonial> =
-  mongoose.models.Testimonial ??
-  mongoose.model<ITestimonial>("Testimonial", testimonialSchema);
+  mongoose.models.Testimonial ?? mongoose.model<ITestimonial>("Testimonial", testimonialSchema);

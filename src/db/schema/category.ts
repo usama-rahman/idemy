@@ -22,5 +22,4 @@ const categorySchema: Schema<ICategory> = new Schema({
 });
 
 export const Category: Model<ICategory> =
-  mongoose.models.Category ??
-  mongoose.model<ICategory>("Category", categorySchema);
+  mongoose.models.Category ?? mongoose.model<ICategory>("Category", categorySchema);

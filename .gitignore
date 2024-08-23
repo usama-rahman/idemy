@@ -9,6 +9,8 @@
 yarn.lock
 package-lock.json
 model
+js
+template
 
 # testing
 /coverage

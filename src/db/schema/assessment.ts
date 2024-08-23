@@ -17,5 +17,4 @@ const assessmentSchema: Schema<IAssessment> = new Schema({
 });
 
 export const Assessment: Model<IAssessment> =
-  mongoose.models.Assessment ??
-  mongoose.model<IAssessment>("Assessment", assessmentSchema);
+  mongoose.models.Assessment ?? mongoose.model<IAssessment>("Assessment", assessmentSchema);

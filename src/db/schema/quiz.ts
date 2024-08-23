@@ -33,5 +33,4 @@ const quizzesSchema: Schema<IQuiz> = new Schema({
   },
 });
 
-export const Quiz: Model<IQuiz> =
-  mongoose.models.Quiz ?? mongoose.model<IQuiz>("Quiz", quizzesSchema);
+export const Quiz: Model<IQuiz> = mongoose.models.Quiz ?? mongoose.model<IQuiz>("Quiz", quizzesSchema);

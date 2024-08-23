@@ -49,5 +49,4 @@ const lessonSchema: Schema<ILesson> = new Schema({
   },
 });
 
-export const Lesson: Model<ILesson> =
-  mongoose.models.Lesson ?? mongoose.model<ILesson>("Lesson", lessonSchema);
+export const Lesson: Model<ILesson> = mongoose.models.Lesson ?? mongoose.model<ILesson>("Lesson", lessonSchema);

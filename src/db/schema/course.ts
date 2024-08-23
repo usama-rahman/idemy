@@ -63,5 +63,4 @@ const courseSchema: Schema<ICourse> = new Schema({
   },
 });
 
-export const Course: Model<ICourse> =
-  mongoose.models.Course ?? mongoose.model<ICourse>("Course", courseSchema);
+export const Course: Model<ICourse> = mongoose.models.Course ?? mongoose.model<ICourse>("Course", courseSchema);

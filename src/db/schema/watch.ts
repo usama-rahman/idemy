@@ -36,5 +36,4 @@ const watchSchema: Schema<IWatch> = new Schema({
   },
 });
 
-export const Watch: Model<IWatch> =
-  mongoose.models.Watch ?? mongoose.model<IWatch>("Watch", watchSchema);
+export const Watch: Model<IWatch> = mongoose.models.Watch ?? mongoose.model<IWatch>("Watch", watchSchema);

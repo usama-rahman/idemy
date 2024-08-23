@@ -1,9 +1,10 @@
 import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
+
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { User } from "./model/user-model";
 import bcrypt from "bcryptjs";
+import { User } from "@/db/schema/user";
+import authConfig from "./auth.config";
 
 async function refreshAccessToken(token) {
   try {
@@ -77,8 +78,7 @@ export const {
             throw new Error("User not found");
           }
         } catch (err) {
-          console.error(err);
-          throw new Error(err);
+          throw new Error(err as string);
         }
       },
     }),
@@ -94,39 +94,4 @@ export const {
       },
     }),
   ],
-  /* callbacks: {
-        async jwt({ token, user, account }) {
-          console.log(`JWT token: ${JSON.stringify(token)}`);
-          console.log(`JWT Account: ${JSON.stringify(account)}`);
-
-            if (account && user) {
-                return {
-                    accessToken: account?.access_token,
-                    accessTokenExpires: Date.now() + account?.expires_in * 1000,
-                    refreshToken: account?.refresh_token,
-                    user,
-                };
-            }
-
-            console.log(`Token Will Expire at ${new Date(token.accessTokenExpires)})`);
-
-            if (Date.now() < token?.accessTokenExpires) {
-                console.log(`At ${new Date(Date.now())}, Using old access token`);
-                return token;
-            }
-
-            console.log(`Token Expired at ${new Date(Date.now())}`)
-            return refreshAccessToken(token);
-        },
-
-        async session({ session, token }) {
-
-          session.user = token?.user;
-          session.accessToken = token?.access_token;
-          session.error = token?.error
-
-          console.log(`Returning Session ${JSON.stringify(session)}`)
-          return session;
-        },
-    },*/
 });

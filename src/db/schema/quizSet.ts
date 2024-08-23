@@ -32,6 +32,4 @@ const quizesetSchema: Schema<IQuizset> = new Schema({
   },
 });
 
-export const Quizset: Model<IQuizset> =
-  mongoose.models.Quizset ??
-  mongoose.model<IQuizset>("Quizset", quizesetSchema);
+export const Quizset: Model<IQuizset> = mongoose.models.Quizset ?? mongoose.model<IQuizset>("Quizset", quizesetSchema);
