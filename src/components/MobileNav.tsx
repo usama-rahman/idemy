@@ -1,9 +1,8 @@
 import * as React from "react";
 import Link from "next/link";
-
 import { cn } from "@/lib/utils";
-
 import navLinks from "@/lib/navbar";
+import NavAuth from "./NavAuth";
 
 interface MobileNavProps {
   children: React.ReactNode;
@@ -30,28 +29,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ children }) => {
             </Link>
           ))}
         </nav>
-        {/* {!loginSession && (
-          <div className="items-center gap-3 flex lg:hidden">
-            <Link href="/login" className={cn(buttonVariants({ size: "sm" }), "px-4")}>
-              Login
-            </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  Register
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="w-56 mt-4">
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href="/register/student">Student</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href="/register/instructor">Instructor</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        )} */}
+        {/* {!loginSession && <NavAuth />} */}
         {children}
       </div>
     </div>
