@@ -1,4 +1,6 @@
+import MainNav from "@/components/MainNav";
 import SectionTitle from "@/components/SectionTitle";
+import SiteFooter from "@/components/SiteFooter";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
@@ -7,6 +9,7 @@ import Link from "next/link";
 const HomePage = async () => {
   return (
     <>
+      {/* <MainNav /> */}
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 grainy">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center relative isolate">
           <div

@@ -15,11 +15,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import navLinks from "@/lib/navbar";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
+import { ModeToggle } from "./ModeToggle";
+
+type UserData = {
+  role: "instructor" | "student" | "admin";
+  profilePicture?: string;
+};
 
 function MainNav({ children }: { children?: React.ReactNode }) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [loginSession, setLoginSession] = useState(null);
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState<UserData | null>(null);
 
   const items = navLinks;
 
@@ -27,7 +33,7 @@ function MainNav({ children }: { children?: React.ReactNode }) {
     async function fetchMe() {
       try {
         const response = await fetch("/api/login");
-        const data = await response.json();
+        const data: UserData = await response.json();
         setLoggedInUser(data);
       } catch (err) {
         console.log(err);
@@ -124,6 +130,7 @@ function MainNav({ children }: { children?: React.ReactNode }) {
         <button className="flex items-center space-x-2 lg:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
           {showMobileMenu ? <X /> : <Menu />}
         </button>
+        <ModeToggle />
       </nav>
     </>
   );
