@@ -1,10 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ceredntialLogin } from "@/actions/auth";
 
 function LoginForm() {
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  async function onSubmit(event: React.FormEvent) {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.currentTarget as HTMLFormElement);
+      const response = await ceredntialLogin(formData);
+
+      if (!!response.error) {
+        console.error(response.error);
+        setError(response.error);
+      } else {
+        router.push("/courses");
+      }
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  }
+
   return (
     <Card className="mx-auto max-w-sm w-full">
       <CardHeader>
@@ -12,9 +38,7 @@ function LoginForm() {
         <CardDescription>Enter your email below to login to your account</CardDescription>
       </CardHeader>
       <CardContent>
-        <form
-        // onSubmit={onSubmit}
-        >
+        <form onSubmit={onSubmit}>
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>

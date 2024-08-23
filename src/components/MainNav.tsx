@@ -23,19 +23,18 @@ function MainNav({ children }: { children?: React.ReactNode }) {
 
   const items = navLinks;
 
-  //   useEffect(() => {
-  //     async function fetchMe() {
-  //       try {
-  //         const response = await fetch("/api/me");
-  //         const data = await response.json();
-  //         setLoggedInUser(data);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     }
-
-  //     fetchMe();
-  //   }, []);
+  useEffect(() => {
+    async function fetchMe() {
+      try {
+        const response = await fetch("/api/login");
+        const data = await response.json();
+        setLoggedInUser(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchMe();
+  }, []);
 
   return (
     <>
@@ -88,7 +87,7 @@ function MainNav({ children }: { children?: React.ReactNode }) {
           <DropdownMenuTrigger asChild>
             <div className="cursor-pointer">
               <Avatar>
-                {/* <AvatarImage src={loggedInUser?.profilePicture} alt="@shadcn" /> */}
+                <AvatarImage src={loggedInUser?.profilePicture} alt="@shadcn" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </div>
@@ -97,11 +96,11 @@ function MainNav({ children }: { children?: React.ReactNode }) {
             <DropdownMenuItem className="cursor-pointer" asChild>
               <Link href="/account">Profile</Link>
             </DropdownMenuItem>
-            {/* {loggedInUser?.role === "instructor" && (
+            {loggedInUser?.role === "instructor" && (
               <DropdownMenuItem className="cursor-pointer" asChild>
                 <Link href="/dashboard">Dashboard</Link>
               </DropdownMenuItem>
-            )} */}
+            )}
             <DropdownMenuItem className="cursor-pointer" asChild>
               <Link href="/account/enrolled-courses">My Courses</Link>
             </DropdownMenuItem>
