@@ -1,32 +1,21 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-export interface ILesson extends Document {
+interface IModule extends Document {
   title: string;
   description?: string;
-  duration: number;
-  video_url?: string;
   active: boolean;
   slug: string;
-  access: string;
+  course: mongoose.Types.ObjectId;
+  lessonIds: mongoose.Types.ObjectId[];
   order: number;
 }
 
-const lessonSchema: Schema<ILesson> = new Schema({
+const moduleSchema = new Schema<IModule>({
   title: {
     required: true,
     type: String,
   },
   description: {
-    required: false,
-    type: String,
-  },
-  duration: {
-    required: true,
-    default: 0,
-    type: Number,
-  },
-  video_url: {
-    required: false,
     type: String,
   },
   active: {
@@ -38,15 +27,16 @@ const lessonSchema: Schema<ILesson> = new Schema({
     required: true,
     type: String,
   },
-  access: {
+  course: {
     required: true,
-    default: "private",
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Course",
   },
+  lessonIds: [{ type: Schema.Types.ObjectId, ref: "Lesson" }],
   order: {
     required: true,
     type: Number,
   },
 });
 
-export const Lesson: Model<ILesson> = mongoose.models.Lesson ?? mongoose.model<ILesson>("Lesson", lessonSchema);
+export const Module = mongoose.models.Module ?? mongoose.model<IModule>("Module", moduleSchema);
