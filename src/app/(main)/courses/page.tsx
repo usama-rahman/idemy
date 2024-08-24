@@ -3,6 +3,8 @@ import SearchCourse from "./components/SearchCourse";
 import SortCourse from "./components/SortCourse";
 import FilterCourseMobile from "./components/FilterCourseMobile";
 import ActiveFilters from "./components/ActiveFilters";
+import FilterCourse from "./components/FilterCourse";
+import CourseCard from "./components/CourseCard";
 
 const CoursesPage = async () => {
   const courses = await getAllCourse();
