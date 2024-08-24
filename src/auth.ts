@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { User } from "./db/schema/user";
+import { toast } from "sonner";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [
@@ -20,13 +21,16 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             if (isMatch) {
               return user;
             } else {
-              throw new Error("Check your password");
+              toast("Check your password");
+              return null;
             }
           } else {
-            throw new Error("User not found");
+            toast("User not found");
+            return null;
           }
-        } catch (err) {
-          throw new Error(err as string);
+        } catch (error) {
+          toast((error as Error).message || "An error occurred");
+          return null;
         }
       },
     }),

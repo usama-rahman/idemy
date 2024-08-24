@@ -15,6 +15,7 @@ export async function ceredntialLogin(formData: any) {
       password: formData.get("password"),
       redirect: false,
     });
+    console.log(response);
     return response;
   } catch (error) {
     throw new Error((error as Error)?.message);
