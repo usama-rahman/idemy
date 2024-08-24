@@ -3,13 +3,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 import { UserData } from "./MainNav";
 import SignOutBtn from "./SignOutBtn";
+import { Session } from "next-auth";
 
 const ProfileDropdown = ({
   loggedInUser,
   loginSession,
 }: {
   loggedInUser: UserData | null;
-  loginSession: string | null;
+  loginSession: Session | null;
 }) => {
   return (
     <DropdownMenu>
