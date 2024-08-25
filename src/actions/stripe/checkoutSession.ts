@@ -1,3 +1,5 @@
+"use server";
+
 import formatAmountForStripe from "@/lib/stripeAmountFormat";
 import { stripe } from "./stripe";
 

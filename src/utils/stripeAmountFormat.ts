@@ -1,3 +1,8 @@
+// interface FormatAmountForStripeProps {
+//   amount: number;
+//   currency: string;
+// }
+
 function formatAmountForStripe(amount, currency) {
   let numberFormat = new Intl.NumberFormat(["en-IN"], {
     style: "currency",

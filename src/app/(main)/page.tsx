@@ -1,15 +1,19 @@
-import MainNav from "@/components/MainNav";
+import { getAllCourse } from "@/actions/course";
 import SectionTitle from "@/components/SectionTitle";
-import SiteFooter from "@/components/SiteFooter";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import CourseCard from "./courses/components/CourseCard";
+import { getCategories } from "@/actions/category";
 
 const HomePage = async () => {
+  const courses = await getAllCourse();
+  const categories = await getCategories();
+
   return (
     <>
-      {/* <MainNav /> */}
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 grainy">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center relative isolate">
           <div
@@ -49,17 +53,18 @@ const HomePage = async () => {
           </div>
         </div>
       </section>
+
       {/* Categories Section */}
       <section id="categories" className="container space-y-6  py-8  md:py-12 lg:py-24">
         <div className="flex items-center justify-between">
           <SectionTitle>Categories</SectionTitle>
 
-          <Link href={""} className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1">
+          <Link href={"/course"} className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1">
             Browse All <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </div>
         <div className="mx-auto grid justify-center gap-4 grid-cols-2  md:grid-cols-3 2xl:grid-cols-4">
-          {/* {categories.map((category) => {
+          {categories.map((category) => {
             return (
               <Link
                 href={`/categories/${category.id}`}
@@ -77,7 +82,7 @@ const HomePage = async () => {
                 </div>
               </Link>
             );
-          })} */}
+          })}
         </div>
       </section>
 
@@ -90,12 +95,13 @@ const HomePage = async () => {
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-          {/* {courses.map((course) => {
+          {courses.map((course) => {
             return <CourseCard key={course.id} course={course} />;
-          })} */}
+          })}
         </div>
       </section>
     </>
   );
 };
+
 export default HomePage;

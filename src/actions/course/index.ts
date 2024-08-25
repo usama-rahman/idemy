@@ -1,3 +1,5 @@
+"use server";
+
 import { Category } from "@/db/schema/category";
 import { Course } from "@/db/schema/course";
 import { Module } from "@/db/schema/module";

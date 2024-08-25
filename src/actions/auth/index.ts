@@ -3,12 +3,12 @@
 import { User } from "@/db/schema/user";
 import { signIn } from "@/auth";
 
-export async function getUserByEmail(email: string) {
+async function getUserByEmail(email: string) {
   const user = await User.findOne({ email: email }).select("-password").lean();
   return user;
 }
 
-export async function ceredntialLogin(formData: any) {
+async function ceredntialLogin(formData: any) {
   try {
     const response = await signIn("credentials", {
       email: formData.get("email"),
@@ -21,3 +21,5 @@ export async function ceredntialLogin(formData: any) {
     throw new Error((error as Error)?.message);
   }
 }
+
+export { ceredntialLogin, getUserByEmail };
